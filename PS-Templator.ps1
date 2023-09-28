@@ -46,8 +46,8 @@ function Get-Version{
 <#
     .SYNOPSIS
 
-    This module prints the version
-    .
+    This module prints the version.
+    
     .DESCRIPTION
 
     Get-Version prints the current version of PS-Templator tool.
@@ -55,6 +55,10 @@ function Get-Version{
     .EXAMPLE
 
     PS > Get-Version
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     Write-Host "`n[+] Current Version:" $global:version`n
@@ -74,6 +78,10 @@ function Search-Path($path, $statement){
     .EXAMPLE
 
     PS > Search-Path "C:\Windows\Tasks" "Output"
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     $pathFlag = $false
@@ -110,6 +118,10 @@ function Determine-PathType($file){
     .EXAMPLE
 
     PS > Determine-PathType Document.docx
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     $searchPathType = [System.IO.Path]::IsPathRooted($file)
@@ -135,6 +147,10 @@ function Determine-FileType($file, $statement){
     .EXAMPLE
 
     PS > Determine-FileType Document.docx InputDoc
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
     
     $fileExtension = [IO.Path]::GetExtension($file)
@@ -165,6 +181,10 @@ function Search-File($file, $statement){
     .EXAMPLE
 
     PS > Search-File Document.docx InputDoc
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     #Call function named Determine-PathType
@@ -205,6 +225,10 @@ function Investigate-Attack-Type($xmlFile, $filenameFolder, $bakDocument, $attac
     .EXAMPLE
 
     PS > Investigate-Attack-Type C:\Users\nickvourd\Desktop\Document\word\_rels\settings.xml.rels C:\Users\nickvourd\Desktop\Document C:\Users\nickvourd\Desktop\Document.docx.bak 1
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
    
@@ -249,6 +273,10 @@ function Determine-Number-RID($xmlFile){
     .EXAMPLE
 
     PS > Determine-Number-RID C:\Users\nickvourd\Desktop\Document\word\settings.xml
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     #namespaces
@@ -316,6 +344,10 @@ function Invoke-Template{
     PS > Invoke-Template -InputDoc Document.docx -Link "\\192.168.1.6\smb\template.dotm" -Output FinalDoc.docx
 
     This inserts a share link to a DOCX document.
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     #Arguments
@@ -496,6 +528,10 @@ function Invoke-Regular{
     PS > Invoke-Regular -InputDoc Document.docx -Link "\\192.168.1.6\smb\template.dot" -Output FinalDoc.docx -TemplateName Default.dotx
 
     This inserts a share link to a DOCX document and determine a Template name.
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
     #Arguments
@@ -682,6 +718,10 @@ function Invoke-Identify{
          PS > Invoke-Identify -InputDoc Document.docx
         
         This tries to identify if the input docx is malicious.
+
+        .LINK
+
+        Github: https://github.com/nickvourd/RTI-Toolkit
     #>
     
         #Arguments
