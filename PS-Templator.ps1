@@ -32,7 +32,7 @@ function Get-Logo{
      |____|  /____  >         |____| \___  >__|_|  /   __/|____(____  /__|  \____/|__|   
                   \/                     \/      \/|__|             \/   
                                   
-                          ~ Created with <3 by @villains_team ~
+                          ~ Created with <3 by @nickvourd ~
                             
                                    Version: $global:version
 
@@ -316,11 +316,6 @@ function Invoke-Template{
     PS > Invoke-Template -InputDoc Document.docx -Link "\\192.168.1.6\smb\template.dotm" -Output FinalDoc.docx
 
     This inserts a share link to a DOCX document.
-
-    .LINK
-
-    Github:         https://github.com/villains-team/RTI-Toolkit/PowerShell/PS-Templator.ps1
-    Blog:           https://villains.team
 #>
 
     #Arguments
@@ -501,13 +496,7 @@ function Invoke-Regular{
     PS > Invoke-Regular -InputDoc Document.docx -Link "\\192.168.1.6\smb\template.dot" -Output FinalDoc.docx -TemplateName Default.dotx
 
     This inserts a share link to a DOCX document and determine a Template name.
-
-    .LINK
-
-    Github:         https://github.com/villains-team/RTI-Toolkit/PowerShell/PS-Templator.ps1
-    Blog:           https://villains.team
 #>
-
 
     #Arguments
     param (
@@ -663,3 +652,129 @@ function Invoke-Regular{
     Write-Host "[+] Your InputDoc as Back Up: $bakDocument`n"
     Write-Host "[+] Exported document: $Output`n" 
 }
+
+function Invoke-Identify{
+    <#
+        .SYNOPSIS
+    
+        This module is used for identifying malicious docx by Remote Template Injection.
+    
+        .DESCRIPTION
+    
+        Invoke-Identify indentifies remote template links into Office Word docx documents.
+    
+        .PARAMETER InputDoc
+    
+        The input DOCX document with the default Office template.
+    
+        .PARAMETER Output
+    
+        The output of the process.
+    
+        .EXAMPLE
+    
+        PS > Invoke-Identify -InputDoc Document.docx -Output results.txt
+    
+        This tries to identify if the input docx is malicious and saves output in a file.
+    
+        .EXAMPLE
+    
+         PS > Invoke-Identify -InputDoc Document.docx
+        
+        This tries to identify if the input docx is malicious.
+    #>
+    
+        #Arguments
+        param (
+            [Parameter(Mandatory=$True,Position=1)]
+                [ValidateNotNull()]
+                [string]$InputDoc,
+    
+            [Parameter(Mandatory=$False,Position=3)]
+                [ValidateNotNull()]
+                [string]$Output
+        )
+    
+        #Call function named Get-Logo
+        Get-Logo
+    
+        #Call function named Search-File
+        $foundFile = Search-File $InputDoc InputDoc
+    
+        #Call function named Determine-FileType
+        Determine-FileType $foundFile InputDoc 0
+    
+        if ($PSBoundParameters.ContainsKey('Output')){
+    
+            #Call function named Determine-FileType
+            Determine-FileType $Output Output 1
+    
+            #Call function named Determine-PathType
+            $foundOutputType = Determine-PathType $Output Output
+    
+        }
+    
+        #Keep back up of the input document
+        $bakDocument = $foundFile + ".bak"
+        Copy-Item $foundFile -Destination $bakDocument
+    
+        #Convert to zip archive
+        $filenameFolder = $foundFile.Replace(".docx","")
+        $filenameFolderAll = $filenameFolder + "\*"
+        $zipArchive = $foundFile + ".zip"
+        Rename-Item -Path $foundFile -NewName $zipArchive
+    
+        #Expand archive
+        Expand-Archive -Path $zipArchive -DestinationPath $filenameFolder
+        Remove-Item -Path $zipArchive -Force
+    
+        #Set a path file to investigate
+        $emergencyPathFile = $filenameFolder +"\word\_rels\settings.xml.rels"
+    
+        #call function named Search-Path
+        $foundPathFile = Search-Path $emergencyPathFile $foundFile 1 $foundFile $bakDocument $filenameFolder
+    
+        #if file exists
+        if ($foundPathFile -ne $False){
+            #Get elements of XML file
+            [xml]$xmlElm = Get-Content $emergencyPathFile
+    
+            foreach($relationship in $XmlElm.Relationships.Relationship){
+                   if ($relationship.Type.EndsWith('attachedTemplate'))
+                {
+                    $target = $relationship.Target
+                }
+             }
+                
+            $successMessage = "[+] $foundFile is clean Document...`n"
+            $failMessage = "[!] Malicious Link found: $target`n"
+            
+            if ($target.StartsWith("file:///") -and $target.EndsWith("_win32.dotx")){
+                Write-Host $successMessage`n
+                if($PSBoundParameters.ContainsKey('Output')){
+                    #call function named Check-Output
+                    $outputFullPath = Check-Output $Output $foundOutputType $successMessage
+                    Write-Host "[+] Output saved: $outputFullPath`n"
+                }
+            }
+            else{
+                Write-Host $failMessage`n
+                if($PSBoundParameters.ContainsKey('Output')){
+                   #call function named Check-Output
+                   $outputFullPath = Check-Output $Output $foundOutputType $failMessage
+                   Write-Host "[+] Output saved: $outputFullPath`n"
+                }
+            }          
+        }
+    
+        #Compress new archive
+        Compress-Archive -Path $filenameFolderAll -DestinationPath $zipArchive
+    
+        #Rename zip archive to docx file
+        Rename-Item -Path $zipArchive -NewName $foundFile -Force
+    
+        #Clean the rubbish
+        Remove-Item -LiteralPath $filenameFolder -Recurse -Force 
+        Remove-Item -LiteralPath $bakDocument -Recurse -Force
+    }
+    
