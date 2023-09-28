@@ -689,40 +689,84 @@ function Invoke-Regular{
     Write-Host "[+] Exported document: $Output`n" 
 }
 
-function Invoke-Identify{
-    <#
-        .SYNOPSIS
+function Get-Output($Output, $foundOutputType, $message){
+<#
+    .SYNOPSIS
     
-        This module is used for identifying malicious docx by Remote Template Injection.
-    
-        .DESCRIPTION
-    
-        Invoke-Identify indentifies remote template links into Office Word docx documents.
-    
-        .PARAMETER InputDoc
-    
-        The input DOCX document with the default Office template.
-    
-        .PARAMETER Output
-    
-        The output of the process.
-    
-        .EXAMPLE
-    
-        PS > Invoke-Identify -InputDoc Document.docx -Output results.txt
-    
-        This tries to identify if the input docx is malicious and saves output in a file.
-    
-        .EXAMPLE
-    
-         PS > Invoke-Identify -InputDoc Document.docx
+    This module checks if Output is absolute path or not and if Output path exists or not.
         
-        This tries to identify if the input docx is malicious.
+    .DESCRIPTION
+    
+    Get-Output tries to determine the Output path type and if Output exists.
 
-        .LINK
+    .EXAMPLE
+    
+    PS > Get-Output "C:\Windows\Tasks\Test.txt" True "It Works!"
 
-        Github: https://github.com/nickvourd/RTI-Toolkit
-    #>
+    .LINK
+        
+    Github: https://github.com/nickvourd/RTI-Toolkit
+#>
+    
+    #If Output is an aboslute path
+    if ($foundOutputType -ne $false){
+        $outputFolder = Split-Path $Output
+        #$outputFilename = [System.IO.Path]::GetFileName($Output)
+    
+        #Call function named Search-Path
+        $foundPath = Search-Path $outputFolder Output 0 1 2 3
+    
+        if ($foundPath -ne $false){
+            New-Item -Path $Output -ItemType File -Value $message -Force | Out-Null
+    
+            #Call function named Search-File
+            $foundOutputFile = Search-File $Output "Output Filename"
+        }
+    }
+    else{
+        New-Item -Path $Output -ItemType File -Value $message -Force | Out-Null
+    
+        #Call function named Search-File
+        $foundOutputFile = Search-File $Output "Output Filename"
+    }
+    
+    return $foundOutputFile
+}
+
+function Invoke-Identify{
+<#
+    .SYNOPSIS
+    
+    This module is used for identifying malicious docx by Remote Template Injection.
+    
+    .DESCRIPTION
+    
+    Invoke-Identify indentifies remote template links into Office Word docx documents.
+    
+    .PARAMETER InputDoc
+    
+    The input DOCX document with the default Office template.
+    
+    .PARAMETER Output
+    
+    The output of the process.
+    
+    .EXAMPLE
+    
+    PS > Invoke-Identify -InputDoc Document.docx -Output results.txt
+    
+    This tries to identify if the input docx is malicious and saves output in a file.
+    
+    .EXAMPLE
+    
+    PS > Invoke-Identify -InputDoc Document.docx
+        
+    This tries to identify if the input docx is malicious.
+
+    .LINK
+
+    Github: https://github.com/nickvourd/RTI-Toolkit
+#>
     
         #Arguments
         param (
@@ -792,16 +836,16 @@ function Invoke-Identify{
             if ($target.StartsWith("file:///") -and $target.EndsWith("_win32.dotx")){
                 Write-Host $successMessage`n
                 if($PSBoundParameters.ContainsKey('Output')){
-                    #call function named Check-Output
-                    $outputFullPath = Check-Output $Output $foundOutputType $successMessage
+                    #call function named Get-Output
+                    $outputFullPath = Get-Output $Output $foundOutputType $successMessage
                     Write-Host "[+] Output saved: $outputFullPath`n"
                 }
             }
             else{
                 Write-Host $failMessage`n
                 if($PSBoundParameters.ContainsKey('Output')){
-                   #call function named Check-Output
-                   $outputFullPath = Check-Output $Output $foundOutputType $failMessage
+                   #call function named Get-Output
+                   $outputFullPath = Get-Output $Output $foundOutputType $failMessage
                    Write-Host "[+] Output saved: $outputFullPath`n"
                 }
             }          
