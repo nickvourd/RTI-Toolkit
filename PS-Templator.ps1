@@ -70,7 +70,7 @@ function Search-Path($path, $statement){
     .SYNOPSIS
 
     This module searches path existence.
-    .
+    
     .DESCRIPTION
 
     Search-Path tries to search if a path exist in the system.
@@ -101,23 +101,23 @@ function Search-Path($path, $statement){
 
 }
 
-function Determine-PathType($file){
+function Get-Pathtype($file){
 <#
     .SYNOPSIS
 
     This module determines the file path type.
-    .
+
     .DESCRIPTION
 
-    Determine-PathType tries to determine if the given file is in absolute path or not.
+    Get-Pathtype tries to determine if the given file is in absolute path or not.
 
     .EXAMPLE
 
-    PS > Determine-PathType C:\Users\nickvourd\Desktop\Document.docx
+    PS > Get-Pathtype C:\Users\nickvourd\Desktop\Document.docx
 
     .EXAMPLE
 
-    PS > Determine-PathType Document.docx
+    PS > Get-Pathtype Document.docx
 
     .LINK
 
@@ -130,23 +130,23 @@ function Determine-PathType($file){
 
 }
 
-function Determine-FileType($file, $statement){
+function Get-Filetype($file, $statement){
 <#
     .SYNOPSIS
 
     This module determines the file type of a document.
-    .
+    
     .DESCRIPTION
 
-    Determine-FileType tries to determine if the given file is docx document or not.
+    Get-Filetype tries to determine if the given file is docx document or not.
 
     .EXAMPLE
 
-    PS > Determine-FileType C:\Users\nickvourd\Desktop\Document.docx InputDoc
+    PS > Get-Filetype C:\Users\nickvourd\Desktop\Document.docx InputDoc
 
     .EXAMPLE
 
-    PS > Determine-FileType Document.docx InputDoc
+    PS > Get-Filetype Document.docx InputDoc
 
     .LINK
 
@@ -169,7 +169,7 @@ function Search-File($file, $statement){
     .SYNOPSIS
 
     This module searches given file in the system.
-    .
+    
     .DESCRIPTION
 
     Search-File tries to seach if given file exist in the system or not.
@@ -187,8 +187,8 @@ function Search-File($file, $statement){
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
-    #Call function named Determine-PathType
-    $foundPathType = Determine-PathType $file
+    #Call function named Get-Pathtype
+    $foundPathType = Get-Pathtype $file
 
     if ($foundPathType -eq $true){                
         #Full path type file search
@@ -202,7 +202,7 @@ function Search-File($file, $statement){
         $searchFile = Get-ChildItem $file -Path $localDrive -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
     }
 
-    if ($searchFile -eq $null){
+    if ($null -eq $searchFile){
 
         Write-Host [!] $statement not found...`n
 
@@ -212,19 +212,19 @@ function Search-File($file, $statement){
     return $searchFile
 }
 
-function Investigate-Attack-Type($xmlFile, $filenameFolder, $bakDocument, $attackNumber){
+function Get-Attacktype($xmlFile, $filenameFolder, $bakDocument, $attackNumber){
 <#
     .SYNOPSIS
 
     This module searches given XML file in the system and determines the attack type.
-    .
+    
     .DESCRIPTION
 
-    Investigate-Attack-Type tries to seach if given XML file exist in the system or not and suggest you which type of attack should you use.
+    Get-Attacktype tries to seach if given XML file exist in the system or not and suggest you which type of attack should you use.
 
     .EXAMPLE
 
-    PS > Investigate-Attack-Type C:\Users\nickvourd\Desktop\Document\word\_rels\settings.xml.rels C:\Users\nickvourd\Desktop\Document C:\Users\nickvourd\Desktop\Document.docx.bak 1
+    PS > Get-Attacktype C:\Users\nickvourd\Desktop\Document\word\_rels\settings.xml.rels C:\Users\nickvourd\Desktop\Document C:\Users\nickvourd\Desktop\Document.docx.bak 1
 
     .LINK
 
@@ -235,7 +235,7 @@ function Investigate-Attack-Type($xmlFile, $filenameFolder, $bakDocument, $attac
   $searchFile = Get-ChildItem $xmlFile -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
 
   if ($attackNumber -eq 1){
-    if ($searchFile -eq $null){
+    if ($null -eq $searchFile){
         Write-Host [!] $xmlFile does not exists.`n
         Write-Host [!] Use Invoke-Regular module for default DOCX documents without Templates.`n
         Write-Host [+] Your InputDoc as Back Up: $bakDocument`n
@@ -247,7 +247,7 @@ function Investigate-Attack-Type($xmlFile, $filenameFolder, $bakDocument, $attac
     }
   }
   elseif ($attackNumber -eq 2){
-    if ($searchFile -ne $null){
+    if ($null -ne $searchFile){
         Write-Host [!] $xmlFile exists.`n
         Write-Host [!] Use Invoke-Template module for DOCX documents with Templates.`n
         Write-Host [+] Your InputDoc as Back Up: $bakDocument`n
@@ -260,19 +260,19 @@ function Investigate-Attack-Type($xmlFile, $filenameFolder, $bakDocument, $attac
   }
 }
 
-function Determine-Number-RID($xmlFile){
+function Get-NumberRID($xmlFile){
 <#
     .SYNOPSIS
 
     This module searches for the number of rids in settings.xml file.
-    .
+    
     .DESCRIPTION
 
-    Determine-Number-RID tries to seach for the number of rids in settings.xml file (Invoke-Regular attack).
+    Get-NumberRID tries to seach for the number of rids in settings.xml file (Invoke-Regular attack).
 
     .EXAMPLE
 
-    PS > Determine-Number-RID C:\Users\nickvourd\Desktop\Document\word\settings.xml
+    PS > Get-NumberRID C:\Users\nickvourd\Desktop\Document\word\settings.xml
 
     .LINK
 
@@ -287,7 +287,7 @@ function Determine-Number-RID($xmlFile){
 
     [xml]$xmlElm = Get-Content $xmlFile
     $documentNamespace = @{r=$xmlNamespaceR;w=$xmlNamespaceW}
-    $xmlElm | Select-Xml -XPath "//*/@r:id" -Namespace $documentNamespace | foreach {
+    $xmlElm | Select-Xml -XPath "//*/@r:id" -Namespace $documentNamespace | ForEach-Object {
         if ([int]($_.Node."#text".substring(3)) -gt [int]$rid)
         {
             $rid = [int]($_.Node."#text".substring(3))
@@ -371,13 +371,13 @@ function Invoke-Template{
     #Call function named Search-File
     $foundFile = Search-File $InputDoc InputDoc
 
-    #Call function named Determine-FileType
-    Determine-FileType $foundFile InputDoc
+    #Call function named Get-Filetype
+    Get-Filetype $foundFile InputDoc
 
     if ($PSBoundParameters.ContainsKey('Output')){
 
-        #Call function named Determine-FileType
-        Determine-FileType $Output Output
+        #Call function named Get-Filetype
+        Get-Filetype $Output Output
     }
 
     #Keep back up of the input document
@@ -397,8 +397,8 @@ function Invoke-Template{
     #Set XML file path
     $xmlFile = $filenameFolder +"\word\_rels\settings.xml.rels"
 
-    #call function named Investigate-Attack-Type
-    Investigate-Attack-Type $xmlFile $filenameFolder $bakDocument 1 
+    #call function named Get-Attacktype
+    Get-Attacktype $xmlFile $filenameFolder $bakDocument 1 
 
     #Get elements of XML file
     [xml]$xmlElm = Get-Content $xmlFile
@@ -418,8 +418,8 @@ function Invoke-Template{
 
     if($PSBoundParameters.ContainsKey('Output')){
 
-        #Call function named Determine-PathType
-        $foundOutputType = Determine-PathType $Output Output
+        #Call function named Get-Pathtype
+        $foundOutputType = Get-Pathtype $Output Output
 
         $outputFilename = $Output
 
@@ -559,12 +559,12 @@ function Invoke-Regular{
     #Call function named Search-File
     $foundFile = Search-File $InputDoc InputDoc
 
-    #Call function named Determine-FileType
-    Determine-FileType $foundFile InputDoc
+    #Call function named Get-Filetype
+    Get-Filetype $foundFile InputDoc
 
     if ($PSBoundParameters.ContainsKey('Output')){
-        #Call function named Determine-FileType
-        Determine-FileType $Output Output
+        #Call function named Get-Filetype
+        Get-Filetype $Output Output
     }
 
     #Keep back up of the input document
@@ -585,14 +585,14 @@ function Invoke-Regular{
     #Set XML file path
     $xmlFile = $filenameFolder +"\word\_rels\settings.xml.rels"
 
-    #call function named Investigate-Attack-Type
-    Investigate-Attack-Type $xmlFile $filenameFolder $bakDocument 2 
+    #call function named Get-Attacktype
+    Get-Attacktype $xmlFile $filenameFolder $bakDocument 2 
 
     #Reset XML file path
     $xmlFile = $filenameFolder +"\word\settings.xml"
 
-    #Call function named Determine-Number-RID
-    $foundRid = Determine-Number-RID $xmlFile
+    #Call function named Get-NumberRID
+    $foundRid = Get-NumberRID $xmlFile
 
     #set new value
     $newValue = @"
@@ -640,8 +640,8 @@ function Invoke-Regular{
 
     if($PSBoundParameters.ContainsKey('Output')){
 
-        #Call function named Determine-PathType
-        $foundOutputType = Determine-PathType $Output Output
+        #Call function named Get-Pathtype
+        $foundOutputType = Get-Pathtype $Output Output
 
         $outputFilename = $Output
 
@@ -741,16 +741,16 @@ function Invoke-Identify{
         #Call function named Search-File
         $foundFile = Search-File $InputDoc InputDoc
     
-        #Call function named Determine-FileType
-        Determine-FileType $foundFile InputDoc 0
+        #Call function named Get-Filetype
+        Get-Filetype $foundFile InputDoc 0
     
         if ($PSBoundParameters.ContainsKey('Output')){
     
-            #Call function named Determine-FileType
-            Determine-FileType $Output Output 1
+            #Call function named Get-Filetype
+            Get-Filetype $Output Output 1
     
-            #Call function named Determine-PathType
-            $foundOutputType = Determine-PathType $Output Output
+            #Call function named Get-Pathtype
+            $foundOutputType = Get-Pathtype $Output Output
     
         }
     
