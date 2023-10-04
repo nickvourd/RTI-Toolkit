@@ -354,7 +354,6 @@ function Invoke-Template{
     This inserts a share link to a DOCX document.
 
     .LINK
-
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
@@ -538,7 +537,6 @@ function Invoke-Regular{
     This inserts a share link to a DOCX document and determine a Template name.
 
     .LINK
-
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
 
@@ -711,8 +709,7 @@ function Get-Output($Output, $foundOutputType, $message){
     
     PS > Get-Output "C:\Windows\Tasks\Test.txt" True "It Works!"
 
-    .LINK
-        
+    .LINK    
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
     
@@ -774,7 +771,6 @@ function Invoke-Identify{
     This tries to identify if the input docx is malicious.
 
     .LINK
-
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
     
