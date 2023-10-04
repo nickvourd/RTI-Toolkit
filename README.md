@@ -65,3 +65,4 @@ Import-Module .\PS-Templator.ps1
 - [john-woodman.com](https://john-woodman.com/research/vba-macro-remote-template-injection/)
 - [remoteInjector GitHub](https://github.com/JohnWoodman/remoteInjector)
 - [Invoke-Templator GitHub](https://github.com/outflanknl/Invoke-Templator)
+- [attack.mitre.org](https://attack.mitre.org/techniques/T1221/)
