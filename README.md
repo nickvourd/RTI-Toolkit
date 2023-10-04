@@ -36,6 +36,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
     - [Invoke-Template](#invoke-template)
       - [Invoke-Template Example](#invoke-template-example)
     - [Invoke-Regular](#invoke-regular)
+      - [Invoke-Regular Example](#invoke-regular-example)
     - [Invoke-Identify](#invoke-identify)
   - [References](#references)
 
@@ -61,7 +62,7 @@ Import-Module .\PS-Templator.ps1
 
 ### Invoke-Template
 
-Invoke-Template is a cmdlet that implements remote template links within default Office Word templates.
+`Invoke-Template` is a cmdlet that implements remote template links within default Office Word templates.
 
 #### Invoke-Template Example
 
@@ -90,6 +91,18 @@ From debugging prespective, if you connvert the malicious docx to zip archive an
 ![Invoke-Template-Debug](/Pictures/Invoke-Template-Debug.png)
 
 ### Invoke-Regular
+
+`Invoke-Regular` is a cmdlet that implements remote template links within default Office Word documents without templates.
+
+#### Invoke-Regular Example
+
+Assuming that you have a default Word document without a template, like this:
+
+![Blank Document](/Pictures/Blank-Document.png)
+
+Saved as, for example, 'Doc1.docx':
+
+![Word Document](/Pictures/Word-Document.png)
 
 ### Invoke-Identify
 
