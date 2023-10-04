@@ -22,3 +22,10 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 - [RTI-Toolkit](#rti-toolkit)
   - [Description](#description)
   - [License](#license)
+
+## References
+- [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
+- [dmcxblue.gitbook.io](https://dmcxblue.gitbook.io/red-team-notes-2-0/red-team-techniques/defense-evasion/t1221-template-injection)
+- [john-woodman.com](https://john-woodman.com/research/vba-macro-remote-template-injection/)
+- [remoteInjector GitHub](https://github.com/JohnWoodman/remoteInjector)
+- [Invoke-Templator GitHub](https://github.com/outflanknl/Invoke-Templator)
