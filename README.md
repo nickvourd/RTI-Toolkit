@@ -80,6 +80,10 @@ Outcome:
 
 As you can see, the Invoke-Template module keeps a backup of the original document and provides the full path to the malicious document.
 
+From debugging prespective, if you connvert the malicious docx to zip archive and go into /word/_rels/settings.xml.rels you can see the malicious link:
+
+![Invoke-Template-Debug](/Pictures/Invoke-Template-Debug.png)
+
 ### Invoke-Regular
 
 ### Invoke-Identify
