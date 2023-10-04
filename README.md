@@ -10,7 +10,7 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 | Cmdlet | Description | Prespective |
 | -------|:-----------:|:-----------:|
-| Invoke-Template | Implements remote template links into default Office Word templates  | attacking |
+| [Invoke-Template](#invoke-template) | Implements remote template links into default Office Word templates  | attacking |
 | Invoke-Regular | Implements remote template links into regular Office Word documents without template | attacking |
 | Invoke-Identify | Indentifies remote template links into Office Word docx documents with/without template | defensive |
 
@@ -36,7 +36,7 @@ Remote Template Injection (RTI) in the context of Microsoft Office refers to a s
 
 For example, in a DOCX file, the content is stored in XML format within the archive, and some of these XML files may reference external resources or templates. Attackers can indeed manipulate these XML files to insert malicious links or content that can potentially exploit vulnerabilities or deceive users. 
 
-This is Macro-Based attack.
+This is a Macro-Based attack.
 
 ## cmdlets
 
