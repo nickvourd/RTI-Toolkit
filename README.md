@@ -13,6 +13,7 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 | [Invoke-Template](#invoke-template) | Implements remote template links within default Office Word templates  | attacking |
 | [Invoke-Regular](#invoke-regular) | Implements remote template links within regular Office Word documents without template | attacking |
 | [Invoke-Identify](#invoke-identify) | Indentifies remote template links within Office Word docx documents with/without template | defensive |
+| Invoke-Type | | Misc |
 
 ⚠️ `PS-Templator.ps1` supports only DOCX files.
 
