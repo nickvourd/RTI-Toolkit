@@ -24,6 +24,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
   - [License](#license)
   - [Table of Contents](#table-of-contents)
   - [Remote Template Injection (RTI)](#remote-template-injection-rti)
+  - [Installation](#installation)
   - [cmdlets](#cmdlets)
     - [Invoke-Template](#invoke-template)
     - [Invoke-Regular](#invoke-regular)
@@ -37,6 +38,16 @@ Remote Template Injection (RTI) in the context of Microsoft Office refers to a s
 For example, in a DOCX file, the content is stored in XML format within the archive, and some of these XML files may reference external resources or templates. Attackers can indeed manipulate these XML files to insert malicious links or content that can potentially exploit vulnerabilities or deceive users. 
 
 This is a Macro-Based attack.
+
+## Installation
+
+To load as module `PS-Templator.ps1` into the memory, run the following command:
+```
+Import-Module .\PS-Templator.ps1
+```
+
+:information_source: `PS-Templator.ps1` works without the necessity of installing any additional dependencies.
+:information_source: `PS-Templator.ps1` works as PowerShell module.
 
 ## cmdlets
 
