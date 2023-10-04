@@ -60,7 +60,11 @@ Invoke-Template is a cmdlet that implements remote template links within default
 
 #### Invoke-Template Example
 
-Assuming that you have a default Word template, like this (Saved as, for example, 'Name.docx'):
+Assuming that you have a default Word template, one like them:
+
+![All Words Templates](/Pictures/All-Word-Templates.png)
+
+Saved as, for example, 'Name.docx':
 
 ![Default Word Template Document](/Pictures/Default-Word-Template.png)
 
