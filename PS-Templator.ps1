@@ -155,13 +155,23 @@ function Get-Filetype($file, $statement){
     
     $fileExtension = [IO.Path]::GetExtension($file)
 
-    if ($fileExtension -ne ".docx"){
+    if ($statement -eq 1){
+        if ($fileExtension -ne ".docx"){
 
-        Write-Host [!] $statement is not a docx file...`n
-
-        Break
+            Write-Host [!] $statement is not a docx file...`n
+    
+            Break
+        }
     }
-  
+    elseif ($statement -eq 2){
+        Write-Host "Test"
+        if ($fileExtension -ne ".txt"){
+
+            Write-Host [!] $statement is not a txt file...`n
+    
+            Break
+        }
+    }
 }
 
 function Search-File($file, $statement){
@@ -230,8 +240,7 @@ function Get-Attacktype($xmlFile, $filenameFolder, $bakDocument, $attackNumber){
 
     Github: https://github.com/nickvourd/RTI-Toolkit
 #>
-
-   
+  
   $searchFile = Get-ChildItem $xmlFile -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
 
   if ($attackNumber -eq 1){
@@ -757,6 +766,8 @@ function Invoke-Identify{
     
     This tries to identify if the input docx is malicious and saves output in a file.
     
+    Supported file extensions for Output file: .txt
+    
     .EXAMPLE
     
     PS > Invoke-Identify -InputDoc Document.docx
@@ -786,16 +797,15 @@ function Invoke-Identify{
         $foundFile = Search-File $InputDoc InputDoc
     
         #Call function named Get-Filetype
-        Get-Filetype $foundFile InputDoc 0
+        Get-Filetype $foundFile InputDoc 1
     
         if ($PSBoundParameters.ContainsKey('Output')){
     
             #Call function named Get-Filetype
-            Get-Filetype $Output Output 1
+            Get-Filetype $Output Output 2
     
             #Call function named Get-Pathtype
             $foundOutputType = Get-Pathtype $Output Output
-    
         }
     
         #Keep back up of the input document
@@ -828,37 +838,38 @@ function Invoke-Identify{
                 {
                     $target = $relationship.Target
                 }
-             }
-                
-            $successMessage = "[+] $foundFile is clean Document...`n"
-            $failMessage = "[!] Malicious Link found: $target`n"
-            
-            if ($target.StartsWith("file:///") -and $target.EndsWith("_win32.dotx")){
-                Write-Host $successMessage`n
-                if($PSBoundParameters.ContainsKey('Output')){
-                    #call function named Get-Output
-                    $outputFullPath = Get-Output $Output $foundOutputType $successMessage
-                    Write-Host "[+] Output saved: $outputFullPath`n"
-                }
             }
-            else{
-                Write-Host $failMessage`n
-                if($PSBoundParameters.ContainsKey('Output')){
-                   #call function named Get-Output
-                   $outputFullPath = Get-Output $Output $foundOutputType $failMessage
-                   Write-Host "[+] Output saved: $outputFullPath`n"
-                }
-            }          
+        
+        $datestamp = Get-Date -Format "dd/MM/yyyy"
+        $timestamp = Get-Date -Format "HH:mm:ss"
+        $successMessage = "[+] [$datestamp at $timestamp] $foundFile is clean Document!`n"
+        $failMessage = "[!] [$datestamp at $timestamp] Malicious Link found: $target in $foundFile`n"
+            
+        if ($target.StartsWith("file:///") -and $target.EndsWith("_win32.dotx")){
+            Write-Host $successMessage`n
+            if($PSBoundParameters.ContainsKey('Output')){
+                #call function named Get-Output
+                $outputFullPath = Get-Output $Output $foundOutputType $successMessage
+                Write-Host "[+] Output saved: $outputFullPath`n"
+            }
         }
-    
-        #Compress new archive
-        Compress-Archive -Path $filenameFolderAll -DestinationPath $zipArchive
-    
-        #Rename zip archive to docx file
-        Rename-Item -Path $zipArchive -NewName $foundFile -Force
-    
-        #Clean the rubbish
-        Remove-Item -LiteralPath $filenameFolder -Recurse -Force 
-        Remove-Item -LiteralPath $bakDocument -Recurse -Force
+        else{
+            Write-Host $failMessage`n
+                if($PSBoundParameters.ContainsKey('Output')){
+                #call function named Get-Output
+                $outputFullPath = Get-Output $Output $foundOutputType $failMessage
+                Write-Host "[+] Output saved: $outputFullPath`n"
+            }
+        }          
     }
     
+    #Compress new archive
+    Compress-Archive -Path $filenameFolderAll -DestinationPath $zipArchive
+    
+    #Rename zip archive to docx file
+    Rename-Item -Path $zipArchive -NewName $foundFile -Force
+    
+    #Clean the rubbish
+    Remove-Item -LiteralPath $filenameFolder -Recurse -Force 
+    Remove-Item -LiteralPath $bakDocument -Recurse -Force
+}
