@@ -41,6 +41,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
       - [Invoke-Regular Example 2](#invoke-regular-example-2)
     - [Invoke-Identify](#invoke-identify)
       - [Invoke-Identify Example](#invoke-identify-example)
+      - [Invoke-Identify Example 2](#invoke-identify-example-2)
   - [References](#references)
 
 ## Remote Template Injection (RTI)
