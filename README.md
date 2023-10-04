@@ -16,6 +16,10 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 ⚠️ `PS-Templator.ps1` supports only DOCX files.
 
+## Version
+
+### 1.0.0
+
 ## License
 
 This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MIT-License-yellow.svg)](LICENSE).
@@ -23,6 +27,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 ## Table of Contents
 - [RTI-Toolkit](#rti-toolkit)
   - [Description](#description)
+  - [Version](#version)
   - [License](#license)
   - [Table of Contents](#table-of-contents)
   - [Remote Template Injection (RTI)](#remote-template-injection-rti)
