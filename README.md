@@ -148,7 +148,7 @@ From debugging prespective, if you connvert the malicious docx to zip archive an
 
 #### Invoke-Identify Example
 
-Assuming that you have a malicious Word document.
+Assuming that you have a malicious Word document:
 
 ```
 Invoke-Identify -InputDoc LegitDocument.docx -Output C:\Users\User\Desktop\output.txt
@@ -160,7 +160,7 @@ Outcome:
 
 #### Invoke-Identify Example 2
 
-Assuming that you have a non-malicious Word document.
+Assuming that you have a non-malicious Word document:
 
 ```
 Invoke-Identify -InputDoc Name.docx -Output C:\Users\User\Desktop\output2.txt
