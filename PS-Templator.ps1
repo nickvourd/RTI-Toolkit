@@ -799,7 +799,6 @@ function Invoke-Identify{
         Get-Filetype $foundFile InputDoc 1
     
         if ($PSBoundParameters.ContainsKey('Output')){
-
             #Call function named Get-Filetype
             Get-Filetype $Output Output 2
     
