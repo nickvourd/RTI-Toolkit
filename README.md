@@ -22,6 +22,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 - [RTI-Toolkit](#rti-toolkit)
   - [Description](#description)
   - [License](#license)
+  - [References](#references)
 
 ## References
 - [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
