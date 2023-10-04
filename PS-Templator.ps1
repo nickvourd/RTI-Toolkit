@@ -130,7 +130,7 @@ function Get-Pathtype($file){
 
 }
 
-function Get-Filetype($file, $statement){
+function Get-Filetype($file, $type, $statement){
 <#
     .SYNOPSIS
 
@@ -142,7 +142,7 @@ function Get-Filetype($file, $statement){
 
     .EXAMPLE
 
-    PS > Get-Filetype C:\Users\nickvourd\Desktop\Document.docx InputDoc
+    PS > Get-Filetype C:\Users\nickvourd\Desktop\Document.docx InputDoc 1
 
     .EXAMPLE
 
@@ -158,16 +158,15 @@ function Get-Filetype($file, $statement){
     if ($statement -eq 1){
         if ($fileExtension -ne ".docx"){
 
-            Write-Host [!] $statement is not a docx file...`n
+            Write-Host [!] $type is not a docx file...`n
     
             Break
         }
     }
     elseif ($statement -eq 2){
-        Write-Host "Test"
         if ($fileExtension -ne ".txt"){
 
-            Write-Host [!] $statement is not a txt file...`n
+            Write-Host [!] $type is not a txt file...`n
     
             Break
         }
@@ -381,12 +380,12 @@ function Invoke-Template{
     $foundFile = Search-File $InputDoc InputDoc
 
     #Call function named Get-Filetype
-    Get-Filetype $foundFile InputDoc
+    Get-Filetype $foundFile InputDoc 1
 
     if ($PSBoundParameters.ContainsKey('Output')){
 
         #Call function named Get-Filetype
-        Get-Filetype $Output Output
+        Get-Filetype $Output Output 1
     }
 
     #Keep back up of the input document
@@ -569,11 +568,11 @@ function Invoke-Regular{
     $foundFile = Search-File $InputDoc InputDoc
 
     #Call function named Get-Filetype
-    Get-Filetype $foundFile InputDoc
+    Get-Filetype $foundFile InputDoc 1
 
     if ($PSBoundParameters.ContainsKey('Output')){
         #Call function named Get-Filetype
-        Get-Filetype $Output Output
+        Get-Filetype $Output Output 1
     }
 
     #Keep back up of the input document
@@ -800,7 +799,7 @@ function Invoke-Identify{
         Get-Filetype $foundFile InputDoc 1
     
         if ($PSBoundParameters.ContainsKey('Output')){
-    
+
             #Call function named Get-Filetype
             Get-Filetype $Output Output 2
     
