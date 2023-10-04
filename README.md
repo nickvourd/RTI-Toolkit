@@ -32,7 +32,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
   - [Table of Contents](#table-of-contents)
   - [Remote Template Injection (RTI)](#remote-template-injection-rti)
   - [Installation](#installation)
-  - [cmdlets](#cmdlets)
+  - [Cmdlets](#cmdlets)
     - [Invoke-Template](#invoke-template)
       - [Invoke-Template Example](#invoke-template-example)
     - [Invoke-Regular](#invoke-regular)
@@ -59,7 +59,7 @@ Import-Module .\PS-Templator.ps1
 :information_source: `PS-Templator.ps1` works without the necessity of installing any additional dependencies.<br /><br />
 :information_source: `PS-Templator.ps1` works as PowerShell module.
 
-## cmdlets
+## Cmdlets
 
 ### Invoke-Template
 
