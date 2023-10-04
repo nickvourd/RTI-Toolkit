@@ -315,7 +315,7 @@ function Invoke-Template{
 
     .DESCRIPTION
 
-    Invoke-Template implements remote template links into default Office Word templates.
+    Invoke-Template implements remote template links within default Office Word templates.
 
     .PARAMETER InputDoc
 
@@ -483,7 +483,7 @@ function Invoke-Regular{
 
     .DESCRIPTION
 
-    Invoke-Regular implements remote template links into default Office Word documents.
+    Invoke-Regular implements remote template links within default Office Word documents.
 
     .PARAMETER InputDoc
 
@@ -749,7 +749,7 @@ function Invoke-Identify{
     
     .DESCRIPTION
     
-    Invoke-Identify indentifies remote template links into Office Word docx documents.
+    Invoke-Identify indentifies remote template links Within Office Word docx documents.
     
     .PARAMETER InputDoc
     
