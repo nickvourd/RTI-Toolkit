@@ -39,6 +39,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
       - [Invoke-Regular Example](#invoke-regular-example)
       - [Invoke-Regular Example 2](#invoke-regular-example-2)
     - [Invoke-Identify](#invoke-identify)
+      - [Invoke-Identify Example](#invoke-identify-example)
   - [References](#references)
 
 ## Remote Template Injection (RTI)
@@ -140,6 +141,10 @@ From debugging prespective, if you connvert the malicious docx to zip archive an
 ![Invoke-Regular-Fake-Template-Name](/Pictures/Invoke-Regular-Fake-Template-Name.png)
 
 ### Invoke-Identify
+
+`Invoke-identify` is a cmdlet that indentifies remote template links within Office Word docx documents with/without template.
+
+#### Invoke-Identify Example
 
 ## References
 - [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
