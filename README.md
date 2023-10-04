@@ -147,6 +147,28 @@ From debugging prespective, if you connvert the malicious docx to zip archive an
 
 #### Invoke-Identify Example
 
+Assuming that you have a malicious Word document.
+
+```
+Invoke-Identify -InputDoc LegitDocument.docx -Output C:\Users\User\Desktop\output.txt
+```
+
+Outcome:
+
+![Invoke-Identify Malicous Example](/Pictures/Invoke-Identify-Malicious-Example.png)
+
+#### Invoke-Identify Example 2
+
+Assuming that you have a non-malicious Word document.
+
+```
+Invoke-Identify -InputDoc Name.docx -Output C:\Users\User\Desktop\output2.txt
+```
+
+Outcome:
+
+![Invoke-Identify Clean Example](/Pictures/Invoke-Identify-Clean-Example.png)
+
 ## References
 - [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
 - [dmcxblue.gitbook.io](https://dmcxblue.gitbook.io/red-team-notes-2-0/red-team-techniques/defense-evasion/t1221-template-injection)
