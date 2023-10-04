@@ -41,7 +41,7 @@ This is a Macro-Based attack.
 
 ## Installation
 
-To load as module `PS-Templator.ps1` into the memory, run the following command:
+To load `PS-Templator.ps1` as a module into memory, run the following command:
 ```
 Import-Module .\PS-Templator.ps1
 ```
