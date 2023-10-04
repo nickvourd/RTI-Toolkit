@@ -22,7 +22,29 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 - [RTI-Toolkit](#rti-toolkit)
   - [Description](#description)
   - [License](#license)
+  - [Table of Contents](#table-of-contents)
+  - [Remote Template Injection (RTI)](#remote-template-injection-rti)
+  - [cmdlets](#cmdlets)
+    - [Invoke-Template](#invoke-template)
+    - [Invoke-Regular](#invoke-regular)
+    - [Invoke-Identify](#invoke-identify)
   - [References](#references)
+
+## Remote Template Injection (RTI)
+
+Remote Template Injection (RTI) in the context of Microsoft Office refers to a specific type of security vulnerability that can be exploited through malicious templates in Office documents (e.g., Word, Excel, PowerPoint).
+
+For example, in a DOCX file, the content is stored in XML format within the archive, and some of these XML files may reference external resources or templates. Attackers can indeed manipulate these XML files to insert malicious links or content that can potentially exploit vulnerabilities or deceive users. 
+
+This is Macro-Based attack.
+
+## cmdlets
+
+### Invoke-Template
+
+### Invoke-Regular
+
+### Invoke-Identify
 
 ## References
 - [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
