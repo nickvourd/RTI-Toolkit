@@ -46,7 +46,7 @@ To load as module `PS-Templator.ps1` into the memory, run the following command:
 Import-Module .\PS-Templator.ps1
 ```
 
-:information_source: `PS-Templator.ps1` works without the necessity of installing any additional dependencies.
+:information_source: `PS-Templator.ps1` works without the necessity of installing any additional dependencies.<br />
 :information_source: `PS-Templator.ps1` works as PowerShell module.
 
 ## cmdlets
