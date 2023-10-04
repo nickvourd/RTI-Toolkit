@@ -29,7 +29,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
   - [Installation](#installation)
   - [cmdlets](#cmdlets)
     - [Invoke-Template](#invoke-template)
-      - [Invoke Template Example](#invoke-template-example)
+      - [Invoke-Template Example](#invoke-template-example)
     - [Invoke-Regular](#invoke-regular)
     - [Invoke-Identify](#invoke-identify)
   - [References](#references)
