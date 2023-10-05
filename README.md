@@ -3,7 +3,7 @@
 Remote Template Injection Toolkit
 
 <p align="center">
-  <img width="500" height="500" src="https://github.com/nickvourd/RTI-Toolkit/blob/main/Pictures/injection-Logo.png">
+  <img width="350" height="350" src="https://github.com/nickvourd/RTI-Toolkit/blob/main/Pictures/injection-Logo.png">
 </p>
 
 ## Description
