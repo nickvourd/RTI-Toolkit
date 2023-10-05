@@ -2,6 +2,10 @@
 
 Remote Template Injection Toolkit
 
+<p align="center">
+  <img width="500" height="500" src="https://github.com/nickvourd/RTI-Toolkit/blob/main/Pictures/injection-Logo.png">
+</p>
+
 ## Description
 
 RTI-Toolkit is an open-source PowerShell toolkit for Remote Template Injection attack. This toolkit includes a PowerShell script named `PS-Templator.ps1` which can be used from both an attacking and defensive perspective.
