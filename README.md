@@ -14,10 +14,10 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 | Cmdlet | Description | Prespective |
 | -------|:-----------:|:-----------:|
-| [Invoke-Template](#invoke-template) | Implements remote template links within default Office Word templates  | attacking |
-| [Invoke-Regular](#invoke-regular) | Implements remote template links within regular Office Word documents without template | attacking |
-| [Invoke-Identify](#invoke-identify) | Indentifies remote template links within Office Word docx documents with/without template | defensive |
-| Invoke-Type | | Misc |
+| [Invoke-Template](#invoke-template) | Implements remote template links within default Office Word templates  | Attacking |
+| [Invoke-Regular](#invoke-regular) | Implements remote template links within regular Office Word documents without template | Attacking |
+| [Invoke-Identify](#invoke-identify) | Indentifies remote template links within Office Word docx documents with/without template | Defensive |
+| Invoke-Evade | | Attackingv |
 
 ⚠️ `PS-Templator.ps1` supports only DOCX files.
 
@@ -181,3 +181,4 @@ Outcome:
 - [remoteInjector GitHub John Woodman](https://github.com/JohnWoodman/remoteInjector)
 - [Invoke-Templator GitHub Outflanknl](https://github.com/outflanknl/Invoke-Templator)
 - [attack.mitre.org](https://attack.mitre.org/techniques/T1221/)
+- [BadAssMacros GitHub Inf0secRabbit](https://github.com/Inf0secRabbit/BadAssMacros)
