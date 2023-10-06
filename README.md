@@ -73,7 +73,7 @@ Import-Module .\PS-Templator.ps1
 
 :information_source: `PS-Templator.ps1` works without the necessity of installing any additional dependencies.<br /><br />
 :information_source: `PS-Templator.ps1` works as PowerShell module.<br /><br />
-:information_source: `PS-Templator.ps1` tested on Windows 10 machine with Office 2019 Professional plus<br /><br />
+:information_source: `PS-Templator.ps1` tested on Windows 10 machine with Office 2019 Professional plus
 
 ## Cmdlets
 
