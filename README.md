@@ -28,6 +28,14 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MIT-License-yellow.svg)](LICENSE).
 
+## Acknowledgement
+
+Special thanks to my friend [Stavros Gkounis (a.k.a purpl3ph03n1x)](https://www.linkedin.com/in/stavros-gkounis-603026a6/), who provided invaluable assistance during the beta testing phase of the tool.
+
+This tool was inspired during an ICAST Red Teaming Assessment with [@S1ckB0y1337](https://twitter.com/S1ckB0y1337) a few years ago.
+
+Supernova was created with ❤️ by [@nickvourd](https://twitter.com/nickvourd).
+
 ## Table of Contents
 - [RTI-Toolkit](#rti-toolkit)
   - [Description](#description)
