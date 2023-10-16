@@ -32,7 +32,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 
 Special thanks to my friend [Stavros Gkounis (a.k.a purpl3ph03n1x)](https://www.linkedin.com/in/stavros-gkounis-603026a6/), who provided invaluable assistance during the beta testing phase of the tool.
 
-This tool was inspired during an ICAST Red Teaming Assessment with [@S1ckB0y1337](https://twitter.com/S1ckB0y1337) a few years ago.
+This tool was inspired during an iCAST Red Teaming Assessment with [@S1ckB0y1337](https://twitter.com/S1ckB0y1337) a few years ago.
 
 Supernova was created with ❤️ by [@nickvourd](https://twitter.com/nickvourd).
 
@@ -191,7 +191,7 @@ Outcome:
 - [ired.team](https://www.ired.team/offensive-security/initial-access/phishing-with-ms-office/inject-macros-from-a-remote-dotm-template-docx-with-macros)
 - [dmcxblue.gitbook.io](https://dmcxblue.gitbook.io/red-team-notes-2-0/red-team-techniques/defense-evasion/t1221-template-injection)
 - [john-woodman.com](https://john-woodman.com/research/vba-macro-remote-template-injection/)
-- [remoteInjector GitHub John Woodman](https://github.com/JohnWoodman/remoteInjector)
-- [Invoke-Templator GitHub Outflanknl](https://github.com/outflanknl/Invoke-Templator)
+- [remoteInjector GitHub by John Woodman](https://github.com/JohnWoodman/remoteInjector)
+- [Invoke-Templator GitHub by Outflanknl](https://github.com/outflanknl/Invoke-Templator)
 - [attack.mitre.org](https://attack.mitre.org/techniques/T1221/)
-- [BadAssMacros GitHub Inf0secRabbit](https://github.com/Inf0secRabbit/BadAssMacros)
+- [BadAssMacros GitHub by Inf0secRabbit](https://github.com/Inf0secRabbit/BadAssMacros)
