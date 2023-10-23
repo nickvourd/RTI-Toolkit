@@ -30,7 +30,7 @@ This tool is licensed under the [![License: MIT](https://img.shields.io/badge/MI
 
 ## Acknowledgement
 
-Special thanks to my friend [Stavros Gkounis (a.k.a purpl3ph03n1x)](https://www.linkedin.com/in/stavros-gkounis-603026a6/), who provided invaluable assistance during the beta testing phase of the tool.
+Special thanks to my friends [@Papadope9](https://twitter.com/Papadope9) and [Stavros Gkounis (a.k.a purpl3ph03n1x)](https://www.linkedin.com/in/stavros-gkounis-603026a6/), who provided invaluable assistance during the beta testing phase of the tool.
 
 This tool was inspired during an iCAST Red Teaming Assessment with [@S1ckB0y1337](https://twitter.com/S1ckB0y1337) a few years ago.
 
