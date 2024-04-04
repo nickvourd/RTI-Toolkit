@@ -11,7 +11,7 @@ import (
 var templateArgument = &cobra.Command{
 	// Use defines how the command should be called.
 	Use:          "template",
-	Short:        "Inject into an office template.",
+	Short:        "Inject into an office template",
 	SilenceUsage: true,
 
 	// RunE defines the function to run when the command is executed.
