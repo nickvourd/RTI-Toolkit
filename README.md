@@ -15,7 +15,7 @@ Remote Template Injection Toolkit
 
 RTI-Toolkit is an open-source tool for Remote Template Injection attacks.
 
-The primary tool featured in this repository is the Templator tool which supports various features for attack and defense perspectives. Please refer to the [Features](#features) section for more information.
+The primary tool featured in this repository is the `Templator` tool which supports various features for attack and defense perspectives. Please refer to the [Features](#features) section for more information.
 
 For command-line usage and examples, please refer to our [Wiki](https://github.com/nickvourd/RTI-Toolkit/wiki).
 
