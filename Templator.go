@@ -1,5 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"Templator/Packages/Utils"
+)
 
-func main() { fmt.Println("Hello, World!") }
+func main() {
+	// Call function named CheckGoVersion
+	Utils.CheckGoVersion()
+}
