@@ -3,7 +3,7 @@
 Remote Template Injection Toolkit
 
 <p align="center">
-  <img width="350" height="350" src="/Pictures/RTI-Toolkit-Logo.png"><br /><br />
+  <img width="500" height="500" src="/Pictures/RTI-Toolkit-Logo.png"><br /><br />
   <img alt="Static Badge" src="https://img.shields.io/badge/License-MIT-green?link=https%3A%2F%2Fgithub.com%2Fnickvourd%2FRTI-Toolkit%2Fblob%2Fmain%2FLICENSE">
   <img alt="Static Badge" src="https://img.shields.io/badge/Version-2.0%20(Owl Hunter)-red?link=https%3A%2F%2Fgithub.com%2Fnickvourd%2FRTI-Toolkit%2Freleases"><br /><br />
    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/nickvourd/RTI-Toolkit?logoColor=yellow">
