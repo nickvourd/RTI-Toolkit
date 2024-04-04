@@ -7,11 +7,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// templateArgument represents the 'template' command in the CLI.
-var templateArgument = &cobra.Command{
+// regularArgument represents the 'regular' command in the CLI.
+var regularArgument = &cobra.Command{
 	// Use defines how the command should be called.
-	Use:          "template",
-	Short:        "Inject into an MS Office template document",
+	Use:          "regular",
+	Short:        "Inject into a regular MS Office document (Without template)",
 	SilenceUsage: true,
 
 	// RunE defines the function to run when the command is executed.

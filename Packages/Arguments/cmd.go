@@ -48,6 +48,7 @@ func init() {
 	TemplatorCli.Flags().SortFlags = true
 	TemplatorCli.Flags().BoolP("version", "v", false, "Show Templator current version")
 	TemplatorCli.AddCommand(templateArgument)
+	TemplatorCli.AddCommand(regularArgument)
 
 	// Add flags to specific commands
 }
