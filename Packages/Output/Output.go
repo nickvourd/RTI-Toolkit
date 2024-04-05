@@ -45,6 +45,6 @@ func OutputValidation(fileType string, input string, statement string) string {
 }
 
 // OutputMessage function
-func OutputMessage(path string, duration time.Duration) {
+func OutputRegularMessage(path string, duration time.Duration) {
 	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(path), duration)
 }

@@ -67,7 +67,7 @@ func CreateDocx(file string) {
 	RegularDocxDuration := RegularDocxEndTime.Sub(RegularDocxStartTime)
 
 	// Call function OutputMessage
-	Output.OutputMessage(outputAbsolute, RegularDocxDuration)
+	Output.OutputRegularMessage(outputAbsolute, RegularDocxDuration)
 }
 
 // CreateXlsx function
@@ -100,5 +100,5 @@ func CreateXlsx(file string) {
 	RegularXlsxDuration := RegularXlsxEndTime.Sub(RegularXlsxStartTime)
 
 	// Call function OutputMessage
-	Output.OutputMessage(outputAbsolute, RegularXlsxDuration)
+	Output.OutputRegularMessage(outputAbsolute, RegularXlsxDuration)
 }
