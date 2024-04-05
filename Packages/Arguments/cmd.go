@@ -57,7 +57,7 @@ func init() {
 	// Add flags to specific commands
 	// for cregular command
 	cregularArgument.Flags().StringP("output", "o", "", "Set output file")
-	cregularArgument.Flags().StringP("type", "t", "docx", "Set file type (i.e., docx, xlsx, pptx)")
+	cregularArgument.Flags().StringP("type", "t", "docx", "Set file type (i.e., docx, xlsx)")
 }
 
 // ShowAscii function

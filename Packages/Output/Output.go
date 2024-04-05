@@ -1,10 +1,12 @@
 package Output
 
 import (
+	"Templator/Packages/Colors"
 	"fmt"
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 // AddExtension function
@@ -34,15 +36,15 @@ func OutputValidation(fileType string, input string, statement string) string {
 			// Call function named AddExtension
 			input = AddExtension(".xlsx", input, statement)
 		}
-	case "pptx":
-		if !strings.HasSuffix(strings.ToLower(input), ".pptx") {
-			// Call function named AddExtension
-			input = AddExtension(".pptx", input, statement)
-		}
 	default:
 		logger.Fatal("The file type is not supported.")
 		return ""
 	}
 
 	return input
+}
+
+// OutputMessage function
+func OutputMessage(path string, duration time.Duration) {
+	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(path), duration)
 }

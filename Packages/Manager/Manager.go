@@ -1,21 +1,28 @@
 package Manager
 
 import (
-	"Templator/Packages/Colors"
+	"Templator/Packages/Output"
 	"Templator/Packages/Utils"
-	"fmt"
+	"log"
 	"os"
 	"time"
 
 	"github.com/fumiama/go-docx"
+	"github.com/xuri/excelize/v2"
 )
 
 // CreateFile function
 func CreateFile(file string, filetype string) {
+	logger := log.New(os.Stderr, "[!] ", 0)
 	switch filetype {
 	case "docx":
 		// Call function named CreateDocx
 		CreateDocx(file)
+	case "xlsx":
+		// Call function named CreateXlsx
+		CreateXlsx(file)
+	default:
+		logger.Fatal("The file type is not supported.")
 	}
 
 }
@@ -57,5 +64,39 @@ func CreateDocx(file string) {
 	// Calculate the duration
 	RegularDocxDuration := RegularDocxEndTime.Sub(RegularDocxStartTime)
 
-	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(outputAbsolute), RegularDocxDuration)
+	// Call function OutputMessage
+	Output.OutputMessage(outputAbsolute, RegularDocxDuration)
+}
+
+// CreateXlsx function
+func CreateXlsx(file string) {
+	// Record the start time
+	RegularXlsxStartTime := time.Now()
+
+	// Create a new Excel file
+	f := excelize.NewFile()
+
+	// Add a new sheet
+	index, _ := f.NewSheet("Sheet1")
+	f.SetActiveSheet(index)
+
+	// Add data to the sheet
+	f.SetCellValue("Sheet1", "A1", "Hello World!")
+
+	// Save the workbook to a file
+	if err := f.SaveAs(file); err != nil {
+		panic(err)
+	}
+
+	// Record the end time
+	RegularXlsxEndTime := time.Now()
+
+	// Call function named GetAbsolutePath
+	outputAbsolute := Utils.GetAbsolutePath(file)
+
+	// Calculate the duration
+	RegularXlsxDuration := RegularXlsxEndTime.Sub(RegularXlsxStartTime)
+
+	// Call function OutputMessage
+	Output.OutputMessage(outputAbsolute, RegularXlsxDuration)
 }
