@@ -49,15 +49,8 @@ func init() {
 	TemplatorCli.Flags().BoolP("version", "v", false, "Show Templator current version")
 	TemplatorCli.AddCommand(templateArgument)
 	TemplatorCli.AddCommand(regularArgument)
-	TemplatorCli.AddCommand(ctemplateArgument)
-	TemplatorCli.AddCommand(cregularArgument)
 	TemplatorCli.AddCommand(identifyArgument)
 	TemplatorCli.AddCommand(fileTypeArgument)
-
-	// Add flags to specific commands
-	// for cregular command
-	cregularArgument.Flags().StringP("output", "o", "", "Set output file")
-	cregularArgument.Flags().StringP("type", "t", "docx", "Set file type (i.e., docx, xlsx)")
 }
 
 // ShowAscii function
