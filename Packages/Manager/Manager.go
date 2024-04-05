@@ -46,10 +46,12 @@ func CreateDocx(file string) {
 	if err != nil {
 		panic(err)
 	}
+
 	_, err = w.WriteTo(f)
 	if err != nil {
 		panic(err)
 	}
+
 	err = f.Close()
 	if err != nil {
 		panic(err)
