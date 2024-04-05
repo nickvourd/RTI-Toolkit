@@ -50,7 +50,6 @@ func init() {
 	TemplatorCli.AddCommand(templateArgument)
 	TemplatorCli.AddCommand(regularArgument)
 	TemplatorCli.AddCommand(identifyArgument)
-	TemplatorCli.AddCommand(fileTypeArgument)
 }
 
 // ShowAscii function
