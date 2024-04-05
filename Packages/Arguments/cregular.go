@@ -1,6 +1,8 @@
 package Arguments
 
 import (
+	"Templator/Packages/Manager"
+	"Templator/Packages/Output"
 	"log"
 	"os"
 
@@ -33,6 +35,21 @@ var cregularArgument = &cobra.Command{
 			// Exit the program.
 			os.Exit(0)
 		}
+
+		// Get the value of any flag
+		output, _ := cmd.Flags().GetString("output")
+		fileType, _ := cmd.Flags().GetString("type")
+
+		// If output is empty
+		if output == "" {
+			logger.Fatal("The '-o' or '--output' flag is required for the command to proceed.")
+		}
+
+		// Call function named OutputValidation
+		output = Output.OutputValidation(fileType, output, "output")
+
+		// Call function CreateFile
+		Manager.CreateFile(output, fileType)
 
 		return nil
 	},

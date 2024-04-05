@@ -55,6 +55,9 @@ func init() {
 	TemplatorCli.AddCommand(fileTypeArgument)
 
 	// Add flags to specific commands
+	// for cregular command
+	cregularArgument.Flags().StringP("output", "o", "", "Set output file")
+	cregularArgument.Flags().StringP("type", "t", "docx", "Set file type (i.e., docx, xlsx, pptx)")
 }
 
 // ShowAscii function
