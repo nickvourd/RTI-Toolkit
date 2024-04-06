@@ -55,9 +55,6 @@ var templateArgument = &cobra.Command{
 			logger.Fatal("The link is required.")
 		}
 
-		// Call function named OutputValidation
-		input = Output.OutputValidation(fileType, input, "input")
-
 		// if output is not empty
 		if output != "" {
 			// Call function named OutputValidation

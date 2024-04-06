@@ -12,7 +12,7 @@ import (
 
 // CreateBackup function
 func CreateBackup(originalFilename string) error {
-	// Open the original .docx file
+	// Open the original file
 	originalFile, err := os.Open(originalFilename)
 	if err != nil {
 		return err

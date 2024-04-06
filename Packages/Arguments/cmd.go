@@ -62,7 +62,7 @@ func init() {
 	regularArgument.Flags().SortFlags = true
 	regularArgument.Flags().StringP("input", "i", "", "The input file to inject into")
 	regularArgument.Flags().StringP("output", "o", "", "The output file to save the injected document")
-	regularArgument.Flags().StringP("type", "t", "docx", "The type of the file to inject into. (i.e., docx, xlsx)")
+	regularArgument.Flags().StringP("type", "t", "docx", "The type of the file to inject into. (i.e., docx, xlsx, pptx)")
 	regularArgument.Flags().StringP("link", "l", "", "The link to inject into the document")
 
 	// Add flags to the 'identify' command.

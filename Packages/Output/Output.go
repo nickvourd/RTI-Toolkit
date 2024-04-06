@@ -36,6 +36,11 @@ func OutputValidation(fileType string, input string, statement string) string {
 			// Call function named AddExtension
 			input = AddExtension(".xlsx", input, statement)
 		}
+	case "pptx":
+		if !strings.HasSuffix(strings.ToLower(input), ".pptx") {
+			// Call function named AddExtension
+			input = AddExtension(".pptx", input, statement)
+		}
 	default:
 		logger.Fatal("The file type is not supported.")
 		return ""
