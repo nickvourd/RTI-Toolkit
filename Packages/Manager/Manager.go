@@ -43,6 +43,24 @@ func Inject2Template(fileType string, input string, output string, link string) 
 	}
 }
 
+// Inject2Regular function
+func Inject2Regular(fileType string, input string, output string, link string) {
+	logger := log.New(os.Stderr, "[!] ", 0)
+	switch fileType {
+	case "docx":
+		// Call function named Inject2TemplateDocx
+		//Inject2TemplateOffice(input, output, link, "docx")
+	case "xlsx":
+		// Call function named Inject2TemplateXlsx
+		//Inject2TemplateOffice(input, output, link, "xlsx")
+	case "pptx":
+		// Call function named Inject2TemplatePptx
+		//Inject2TemplateOffice(input, output, link, "pptx")
+	default:
+		logger.Fatal("The file type is not supported.")
+	}
+}
+
 // Inject2TemplateOffice function
 func Inject2TemplateOffice(input string, output string, link string, statement string) {
 	logger := log.New(os.Stderr, "[!] ", 0)

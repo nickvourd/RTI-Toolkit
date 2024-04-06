@@ -1,6 +1,7 @@
 package Arguments
 
 import (
+	"Templator/Packages/Manager"
 	"Templator/Packages/Output"
 	"Templator/Packages/Utils"
 	"log"
@@ -62,6 +63,9 @@ var regularArgument = &cobra.Command{
 			// Set input as output
 			output = input
 		}
+
+		// Call function named Inject2Regular
+		Manager.Inject2Regular(fileType, input, output, link)
 
 		return nil
 	},
