@@ -1,6 +1,8 @@
 package Arguments
 
 import (
+	"Templator/Packages/Output"
+	"Templator/Packages/Utils"
 	"log"
 	"os"
 
@@ -32,6 +34,33 @@ var regularArgument = &cobra.Command{
 
 			// Exit the program.
 			os.Exit(0)
+		}
+
+		// Get all the flags from the 'regular' command
+		input, _ := cmd.Flags().GetString("input")
+		output, _ := cmd.Flags().GetString("output")
+		fileType, _ := cmd.Flags().GetString("type")
+		link, _ := cmd.Flags().GetString("link")
+
+		// if input is empty
+		if input == "" {
+			logger.Fatal("The input file is required.")
+		} else {
+			input = Utils.GetAbsolutePath(input)
+		}
+
+		// if link is empty
+		if link == "" {
+			logger.Fatal("The link is required.")
+		}
+
+		// if output is not empty
+		if output != "" {
+			// Call function named OutputValidation
+			output = Output.OutputValidation(fileType, output, "output")
+		} else {
+			// Set input as output
+			output = input
 		}
 
 		return nil

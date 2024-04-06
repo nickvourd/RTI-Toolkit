@@ -55,7 +55,7 @@ func init() {
 	templateArgument.Flags().SortFlags = true
 	templateArgument.Flags().StringP("input", "i", "", "The input file to inject into")
 	templateArgument.Flags().StringP("output", "o", "", "The output file to save the injected document")
-	templateArgument.Flags().StringP("type", "t", "docx", "The type of the file to inject into (i.e., docx, xlsx)")
+	templateArgument.Flags().StringP("type", "t", "docx", "The type of the file to inject into (i.e., docx, xlsx, pptx)")
 	templateArgument.Flags().StringP("link", "l", "", "The link to inject into the document")
 
 	// Add flags to the 'regular' command.
