@@ -29,7 +29,7 @@ var regularArgument = &cobra.Command{
 			// Show help message.
 			err := cmd.Help()
 			if err != nil {
-				logger.Fatal("Error", err)
+				logger.Fatal("Error: ", err)
 				return err
 			}
 

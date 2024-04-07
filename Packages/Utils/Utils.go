@@ -25,7 +25,7 @@ func GetAbsolutePath(file string) string {
 	logger := log.New(os.Stderr, "[!] ", 0)
 	absolutePath, err := filepath.Abs(file)
 	if err != nil {
-		logger.Fatal("Error:", err)
+		logger.Fatal("Error: ", err)
 		return ""
 	}
 

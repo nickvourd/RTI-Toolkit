@@ -17,7 +17,7 @@ func main() {
 	// RocabellaCli Execute
 	err := Arguments.TemplatorCli.Execute()
 	if err != nil {
-		logger.Fatal("Error", err)
+		logger.Fatal("Error: ", err)
 		return
 	}
 }

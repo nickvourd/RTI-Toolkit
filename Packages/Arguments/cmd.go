@@ -97,7 +97,7 @@ func StartTemplator(cmd *cobra.Command, args []string) error {
 
 		// If error exists
 		if err != nil {
-			logger.Fatal("Error:", err)
+			logger.Fatal("Error: ", err)
 			return err
 		}
 	}

@@ -88,7 +88,7 @@ func RemoveExtension(path string) string {
 func CreateZipArchive(folderPath, outputFilePath string) error {
 	zipFile, err := os.Create(outputFilePath)
 	if err != nil {
-		return fmt.Errorf("error creating zip archive: %v", err)
+		return fmt.Errorf("[!] Error: %v", err)
 	}
 	defer zipFile.Close()
 
@@ -126,7 +126,7 @@ func CreateZipArchive(folderPath, outputFilePath string) error {
 	})
 
 	if err != nil {
-		return fmt.Errorf("[!] Error creating zip archive: %v", err)
+		return fmt.Errorf("[!] Error: %v", err)
 	}
 
 	return nil
