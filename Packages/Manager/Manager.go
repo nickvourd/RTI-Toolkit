@@ -1,7 +1,6 @@
 package Manager
 
 import (
-	"Templator/Packages/Colors"
 	"Templator/Packages/Converters"
 	"Templator/Packages/Output"
 	"Templator/Packages/Utils"
@@ -148,7 +147,8 @@ func Inject2TemplateOffice(input string, output string, link string, statement s
 	// Call function named GetAbsolutePath
 	output = Utils.GetAbsolutePath(output)
 
-	fmt.Printf("[+] MS Office template document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(output), CreationDuration)
+	// Call function named OutputTemplateMessage
+	Output.OutputTemplateMessage(output, CreationDuration)
 }
 
 // Inject2RegularOffice function
@@ -231,5 +231,6 @@ func Inject2RegularOffice(input string, output string, link string, statement st
 	// Call function named GetAbsolutePath
 	output = Utils.GetAbsolutePath(output)
 
-	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(output), CreationDuration)
+	// Call function named OutputRegularMessage
+	Output.OutputRegularMessage(output, CreationDuration)
 }

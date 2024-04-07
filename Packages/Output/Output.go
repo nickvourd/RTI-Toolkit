@@ -54,6 +54,11 @@ func OutputRegularMessage(path string, duration time.Duration) {
 	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(path), duration)
 }
 
+// OutputTemplateMessage function
+func OutputTemplateMessage(path string, duration time.Duration) {
+	fmt.Printf("[+] MS Office template document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(path), duration)
+}
+
 // SetOutput function
 func SetOutput(zipFile string, statement string) {
 	logger := log.New(os.Stderr, "[!] ", 0)

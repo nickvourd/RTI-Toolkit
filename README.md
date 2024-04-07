@@ -15,7 +15,7 @@ Remote Template Injection Toolkit
 
 RTI-Toolkit is an open-source tool for Remote Template Injection attacks.
 
-The primary tool featured in this repository is the `Templator` tool which supports various features for attack and defense perspectives. Please refer to the [Features](#features) section for more information.
+The primary tool featured in this repository is the `Templator` tool which supports various features. Please refer to the [Features](#features) section for more information.
 
 For command-line usage and examples, please refer to our [Wiki](https://github.com/nickvourd/RTI-Toolkit/wiki).
 
@@ -47,7 +47,18 @@ RTI-Toolkit was created with :heart: by [@nickvourd](https://twitter.com/nickvou
 
 ## Features
 
-Features here.
+The Templator tool supports the following MS Office file types:
+
+- docx (Word)
+- xlsx (Excel)
+- pptx (PowerPoint)
+
+The two main modules of Templator are:
+
+| Module   | Description                                                                         |
+|----------|-------------------------------------------------------------------------------------|
+| template | Injects content into an MS Office template document.                                |
+| regular  | Injects content into a regular MS Office document (without a template).             |
 
 ## Installation
 
@@ -80,6 +91,33 @@ go build Templator
 ## Usage
 
 :information_source: Please refer to the [RTI-Toolkit Wiki](https://github.com/nickvourd/RTI-Toolkit/wiki) for detailed usage instructions and examples of commands.
+
+```
+___________                   .__          __
+\__    ___/___   _____ ______ |  | _____ _/  |_  ___________
+  |    |_/ __ \ /     \\____ \|  | \__  \\   __\/  _ \_  __ \
+  |    |\  ___/|  Y Y  \  |_> >  |__/ __ \|  | (  <_> )  | \/
+  |____| \___  >__|_|  /   __/|____(____  /__|  \____/|__|
+             \/      \/|__|             \/
+
+Templator v2.0 - Remote Template Injection Tool.
+Templator is an open source tool licensed under MIT.
+Written with <3 by @nickvourd.
+Please visit https://github/nickvourd/RTI-Toolkit for more...
+
+Usage:
+  Templator [flags]
+  Templator [command]
+
+Available Commands:
+  help        Help about any command
+  regular     Inject into a regular MS Office document (Without template)
+  template    Inject into an MS Office template document
+
+Flags:
+  -h, --help      help for Templator
+  -v, --version   Show Templator current version
+```
 
 ## References
 
