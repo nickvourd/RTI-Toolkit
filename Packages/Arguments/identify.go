@@ -1,6 +1,8 @@
 package Arguments
 
 import (
+	"Templator/Packages/Utils"
+	"fmt"
 	"log"
 	"os"
 
@@ -33,6 +35,19 @@ var identifyArgument = &cobra.Command{
 			// Exit the program.
 			os.Exit(0)
 		}
+
+		// Get all the flags from the 'identify' command
+		input, _ := cmd.Flags().GetString("input")
+		output, _ := cmd.Flags().GetString("output")
+
+		// if input is empty
+		if input == "" {
+			logger.Fatal("The input file is required.")
+		} else {
+			input = Utils.GetAbsolutePath(input)
+		}
+
+		fmt.Println(output)
 
 		return nil
 	},
