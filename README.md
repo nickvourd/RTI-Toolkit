@@ -20,6 +20,8 @@ The following tables presents the main modules (cmdlets) of `PS-Templator.ps1`:
 
 ⚠️ `PS-Templator.ps1` supports only DOCX files.
 
+ℹ️ This tool is referenced by the National Institute of Standards and Technology (NIST) National Vulnerability Database (NVD) in [CVE-2025-65318](https://nvd.nist.gov/vuln/detail/CVE-2025-65318) and [CVE-2025-65319](https://nvd.nist.gov/vuln/detail/CVE-2025-65319).
+
 ## Version
 
 ### 1.0.0
